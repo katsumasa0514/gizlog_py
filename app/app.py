@@ -1,5 +1,18 @@
-from flask import Flask,render_template,request
-app = Flask(__name__)
+from flask import Flask, render_template, request
+
+from app.database import init_db
+
+import models
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object('app.config.Config')
+
+    init_db(app)
+
+    return app
+
+app = create_app()
 
 @app.route('/')
 @app.route('/home')
