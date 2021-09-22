@@ -1,6 +1,6 @@
-from .models import User
+from .models import DailyReport
 
 
 __all__ = [
-    User,
+    DailyReport,
 ]
