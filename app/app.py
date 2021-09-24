@@ -16,12 +16,23 @@ app = create_app()
 
 @app.route('/')
 @app.route('/home')
-def hello_world():
+def wellcom():
     return render_template("home/index.html")
+
+@app.route('/report')
+def index():
+    return render_template("daily_report/index.html")
+
+@app.route('/create', methods=["GET", "POST"])
+def create():
+    if request.method == "POST":
+        date = request.form.get('date')
+        title = request.form.get('title')
+        content = request.form.get('content')
+
+        db.session.add(app)
+
+    return render_template("daily_report/create.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-""" @app.route('/report')
-def hello_world():
-    return render_template("home/index.html") """
