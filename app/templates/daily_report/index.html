@@ -20,14 +20,16 @@
           <th class="col-xs-2"></th>
         </tr>
       </thead>
+      {% for daily_report in daily_reports %}
       <tbody>
         <tr class="row">
-          <td class="col-xs-2"></td>
-          <td class="col-xs-3"></td>
-          <td class="col-xs-5"></td>
+          <td class="col-xs-2">{{ daily_report.reporting_time }}</td>
+          <td class="col-xs-3">{{ daily_report.title }}</td>
+          <td class="col-xs-5">{{ daily_report.content }}</td>
           <td class="col-xs-2"><a class="btn" href=""><i class="fa fa-book"></i></a></td>
         </tr>
       </tbody>
+      {% endfor %}
     </table>
   </div>
 </div>

@@ -14,3 +14,8 @@ class DailyReport(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
     deleted_at = db.Column(db.DateTime, nullable=True, onupdate=datetime.now)
+
+    def __init__(self, reporting_time, title, content):
+        self.title = title
+        self.content = content
+        self.reporting_time = reporting_time
