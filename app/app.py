@@ -27,7 +27,7 @@ def index():
 
     return render_template("daily_report/index.html", daily_reports=daily_reports)
 
-@app.route('/<int:id>')
+@app.route('/report/<int:id>')
 def show(id):
     daily_reports = DailyReport.query.filter(DailyReport.id == id).all()
     """ print(daily_reports, flush=True) """
