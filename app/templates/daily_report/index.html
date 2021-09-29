@@ -8,7 +8,7 @@
       <input type="date" class="form-control">
       <button type="submit" class="btn btn-icon"><i class="fa fa-search"></i></button>
     </form>
-    <a class="btn btn-icon" href=""><i class="fa fa-plus"></i></a>
+    <a class="btn btn-icon" href="/report/create"><i class="fa fa-plus"></i></a>
   </div>
   <div class="content-wrapper table-responsive">
     <table class="table table-striped">
@@ -26,7 +26,7 @@
           <td class="col-xs-2">{{ daily_report.reporting_time }}</td>
           <td class="col-xs-3">{{ daily_report.title }}</td>
           <td class="col-xs-5">{{ daily_report.content }}</td>
-          <td class="col-xs-2"><a class="btn" href=""><i class="fa fa-book"></i></a></td>
+          <td class="col-xs-2"><a class="btn" href="/report/{{ daily_report.id }}"><i class="fa fa-book"></i></a></td>
         </tr>
       </tbody>
       {% endfor %}
