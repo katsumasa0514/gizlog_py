@@ -21,9 +21,14 @@ app = create_app()
 def wellcom():
     return render_template("home/index.html")
 
-@app.route('/report')
+@app.route('/report', methods=["GET", "POST"])
 def index():
     daily_reports = DailyReport.query.all()
+    if request.method == "POST":
+        date = request.form.get('date')
+        daily_reports = DailyReport.query.filter(DailyReport.reporting_time == date).all()
+
+        return render_template("daily_report/index.html", daily_reports=daily_reports)
 
     return render_template("daily_report/index.html", daily_reports=daily_reports)
 
@@ -59,6 +64,18 @@ def edit(id):
         daily_reports.content = request.form.get('content')
 
         db.session.add(daily_reports)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    return render_template("daily_report/edit.html", daily_reports=daily_reports)
+
+@app.route('/report/<int:id>/delete', methods=["POST"])
+def delete(id):
+
+    if request.method == "POST":
+        daily_reports = db.session.query(DailyReport).filter_by(id=id).first()
+        db.session.delete(daily_reports)
         db.session.commit()
 
         return redirect(url_for('index'))
