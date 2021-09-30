@@ -1,0 +1,35 @@
+{% extends "home/application.html" %}
+{% block body %}
+
+<h1 class="brand-header">日報詳細</h1>
+<div class="main-wrap">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      名和の日報
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <tbody>
+          <tr>
+            <th class="table-column">Title</th>
+            <td class="td-text">{{ daily_reports.title }}</td>
+          </tr>
+          <tr>
+            <th class="table-column">Content</th>
+            <td class='td-text'>{{ daily_reports.content }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="btn-bottom-wrapper">
+    <a class="btn btn-edit" href="/report/{{ daily_reports.id }}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+    <div class="btn-delete">
+      <form action="/report/{{ daily_reports.id }}/delete" method="POST">
+        <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
